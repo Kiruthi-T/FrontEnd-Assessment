@@ -2,6 +2,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 
+//detailed Recipe component
+
 function RecipeDetails({ addFavorite, removeFavorite }) {
   const { id } = useParams();      //getting id from url params 
   const [recipe, setRecipe] = useState(null);
