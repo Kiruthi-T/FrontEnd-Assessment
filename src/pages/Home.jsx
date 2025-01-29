@@ -2,8 +2,9 @@ import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Header from '../components/Header'
 import axios from 'axios';
 import Loading from '../components/Loading';
+import Recipe from '../components/Recipe';
 
-const Recipe=lazy(()=>import ('../components/recipe'))
+// const Recipe=lazy(()=>import ('../components/recipe'))
 
 
 function Home() {
