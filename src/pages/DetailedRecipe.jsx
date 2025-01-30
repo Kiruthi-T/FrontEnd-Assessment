@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
+import axios from 'axios';
 
 //detailed Recipe component
 
@@ -10,10 +11,11 @@ function RecipeDetails({ addFavorite, removeFavorite }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-      .then((response) => response.json())
-      .then((data) => setRecipe(data.meals[0]));
-
+    const fetchMealbyid = async () => {
+    const response=await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+       setRecipe(response.data.meals[0]);
+    }
+    fetchMealbyid()
   }, [id]);
 
   if (!recipe) return <p>Loading...</p>;
@@ -54,7 +56,7 @@ function RecipeDetails({ addFavorite, removeFavorite }) {
         <p className="text-lg text-gray-700 mb-6">{recipe.strArea} - {recipe.strCategory}</p>
         </div>
          <div className='cursor-pointer' onClick={handleFavoriteClick}>{/* Add to faviroute btn */}
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={isFavorite ? "red" : "currentColor"} class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill={isFavorite ? "red" : "currentColor"} className="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
           <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
         </svg>
         </div>
