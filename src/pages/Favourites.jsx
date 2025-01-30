@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Favourites = ({favorites}) => {
   // console.log(favorites);
@@ -12,8 +13,8 @@ const Favourites = ({favorites}) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {favorites.map((item, index) => (
             <div >
-          <a key={item.strMeal} href={`/recipe/${item.idMeal}`} className="group block ">
-            <img
+        <Link to={`/recipe/${item.idMeal}`} className="group block">
+        <img
               alt={item.strMeal}
               src={item.strMealThumb}
               className="aspect-square rounded-lg bg-gray-200  group-hover:opacity-75"
@@ -24,7 +25,7 @@ const Favourites = ({favorites}) => {
             <p className="mt-1 text-lg font-medium text-gray-900">{item.strArea}</p>
            
     
-          </a>
+          </Link>
           </div>
         ))}
       </div>
