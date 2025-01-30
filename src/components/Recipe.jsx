@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { MealContext } from "../Mealcontext";
 import Loading from "./Loading";
+import { Link } from 'react-router-dom';
+
 
 export default function Recipe({Searchmeals}) {
   const meal = Searchmeals.length > 0 ? Searchmeals : useContext(MealContext);
@@ -17,7 +19,7 @@ export default function Recipe({Searchmeals}) {
     {meal.map((item) => (
       <center>
         <div >
-      <a key={item.strMeal} href={`/recipe/${item.idMeal}`} className="group block ">
+        <Link to={`/recipe/${item.idMeal}`} className="group block">
         <img
           alt={item.strMeal}
           src={item.strMealThumb}
@@ -28,7 +30,7 @@ export default function Recipe({Searchmeals}) {
         <p className="text-gray-700 mb-6 hidden">{item.strInstructions}</p> 
         {/* i dont like this para here in desktop view so i changed */}
 
-      </a>
+      </Link>
       </div>
       </center>
     ))}

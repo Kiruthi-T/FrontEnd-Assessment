@@ -27,7 +27,7 @@ const App = () => {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/:id" element={<RecipeDetails addFavorite={addFavorite} removeFavorite={removeFavorite} />} />
+        <Route path="/recipe/:id" element={<RecipeDetails addFavorite={addFavorite} removeFavorite={removeFavorite} />} />
         <Route path="/fav" element={<Favourites favorites={favorites}/>}/>
       </Routes>
       <Footer/>
