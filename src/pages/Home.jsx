@@ -30,9 +30,10 @@ function Home() {
   return (
     <>
       <Header SetSearchTerm={SetSearchTerm} />
-      <Suspense fallback={<Loading />}>
+      {/* <Suspense fallback={<Loading />}>
           <Recipe Searchmeals={Searchmeals} SearchTerm={SearchTerm} />
-      </Suspense>
+      </Suspense> */}
+    
     </>
   )
 }
